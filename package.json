@@ -1,0 +1,63 @@
+{
+  "name": "seanime-tool-cli",
+  "version": "1.0.0",
+  "main": "dist/cli.js",
+  "type": "module",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsup src/cli.ts --format esm --target node18 --dts --out-dir dist --splitting false && npm run copy:providers",
+    "copy:providers": "npx tsx src/scripts/copy-templates.ts",
+    "dev": "ts-node src/cli.ts",
+    "prepare": "tsx src/scripts/check-node-version.ts",
+    "semantic-release": "semantic-release"
+  },
+  "bin": {
+    "seanime-tool": "dist/cli.js"
+  },
+  "keywords": [
+    "seanime",
+    "seanime tool",
+    "Seanime CLI"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kRYstall9/seanime-tool-cli"
+  },
+  "homepage": "https://github.com/kRYstall9/seanime-tool-cli/blob/main/README.md",
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "kRYstall9",
+  "license": "ISC",
+  "description": "Seanime Tool CLI for anime & manga extensions template generation.",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "dayjs": "^1.11.13",
+    "figlet": "^1.8.1",
+    "fs-extra": "^11.3.0",
+    "inquirer": "^12.5.2",
+    "semver": "^7.7.1",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@types/degit": "^2.8.6",
+    "@types/figlet": "^1.7.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.14.1",
+    "@types/semver": "^7.7.0",
+    "semantic-release": "^24.2.3",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}

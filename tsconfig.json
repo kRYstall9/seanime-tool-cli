@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "skipLibCheck": true,
+      "outDir": "dist",
+      "resolveJsonModule": true,
+      "declaration": true,
+      "strict": true,
+      "paths": {
+        "@config/*": ["src/config/*"],
+        "@utils/*": ["src/utils/*"],
+        "@commands/*": ["src/commands/*"]
+      },
+      "baseUrl": ".",
+      "rootDir": "src"
+    },
+    "include": ["src"]
+  }
+  
