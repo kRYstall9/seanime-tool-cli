@@ -30,7 +30,7 @@
     "node": ">=18"
   },
   "author": "kRYstall9",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Seanime Tool CLI for anime & manga extensions template generation.",
   "dependencies": {
     "chalk": "^5.4.1",
