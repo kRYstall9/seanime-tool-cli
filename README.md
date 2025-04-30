@@ -26,7 +26,7 @@ Alternatively, for local installation, run:
 
 3. After running the command, choose the type of extension you want to build from the displayed list.
 
-4. Enter the name for the extension when prompted.
+4. Enter the name and the author of the extension when prompted.
 
 
 
