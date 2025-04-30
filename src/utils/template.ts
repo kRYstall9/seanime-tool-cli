@@ -5,7 +5,7 @@ import fs from 'fs-extra';
 import https from 'https';
 import { fileURLToPath } from 'url';
 
-export async function getExtensionFiles(extensionType:string, dirName:string){
+export async function getExtensionFiles(extensionType:string, dirName:string, authorName:string){
 
     const templates = TEMPLATES[extensionType];
     const __filename = fileURLToPath(import.meta.url);
@@ -43,10 +43,16 @@ export async function getExtensionFiles(extensionType:string, dirName:string){
             let data:any = fs.readFileSync(filePath, 'utf-8');
             if(file == 'manifest.json'){
                 data = JSON.parse(data);
-                data['id'] = dirName.toLowerCase().replace(/\s+/g, '');
-                data['name'] = dirName.replace(/\s+/g, '');
-    
+                data['id'] = dirName.toLowerCase().replace(/\s+/g, '-');
+                data['name'] = _normalizeExtensionName(dirName);
+                data['author'] = authorName ?? '';
+                data['payloadURI'] = `${path.resolve(dirName)}\\provider.ts`;
+                data['language'] = 'typescript';
+                
+                file = `${data['id']}.json`;
+                
                 data = JSON.stringify(data, null, 2);
+
             }
     
             await fs.outputFile(path.resolve(dirName, file), data);
@@ -79,4 +85,10 @@ function _downloadFileFromGithub(rawUrl: string, outputPath: string) {
             reject(err.message);
         });
     });
+}
+
+function _normalizeExtensionName(extensionName:string){
+
+    return extensionName.replace(/[^a-zA-Z0-9\s]+/g, '');
+
 }

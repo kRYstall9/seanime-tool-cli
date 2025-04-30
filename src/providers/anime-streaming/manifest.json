@@ -8,5 +8,6 @@
     "type": "onlinestream-provider",
     "language": "",
     "lang": "",
-    "payload": ""
+    "payload": "",
+    "payloadURI": ""
 }
