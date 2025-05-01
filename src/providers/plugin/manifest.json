@@ -1,19 +1,21 @@
 {
-    "id": "",
-    "name": "",
-    "version": "1.0.0",
-    "manifestURI": "",
-    "language": "typescript",
-    "type": "plugin",
-    "description": "An example plugin",
-    "author": "",
-    "icon": "",
-    "website": "",
-    "lang": "multi",
-    "payloadURI": "",
-    "plugin": {
-        "version": "1",
-        "permissions": []
-    },
-    "isDevelopment": true
+  "id": "",
+  "name": "",
+  "version": "1.0.0",
+  "manifestURI": "",
+  "language": "typescript",
+  "type": "plugin",
+  "description": "An example plugin",
+  "author": "",
+  "icon": "",
+  "website": "",
+  "lang": "multi",
+  "payloadURI": "",
+  "plugin": {
+    "version": "1",
+    "permissions": {
+      "scopes": []
+    }
+  },
+  "isDevelopment": true
 }
