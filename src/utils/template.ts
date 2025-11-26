@@ -5,6 +5,7 @@ import fs from 'fs-extra';
 import https from 'https';
 import { fileURLToPath } from 'url';
 
+// Main function to get extension files
 export async function getExtensionFiles(extensionType:string, dirName:string, authorName:string){
 
     const templates = TEMPLATES[extensionType];
@@ -19,10 +20,8 @@ export async function getExtensionFiles(extensionType:string, dirName:string, au
     for(let template of templates){
         try{
             const rawUrl = template.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
-    
             const fileName = path.basename(rawUrl);
             const outputPath = path.resolve(dirName, fileName);
-    
             logger.info(`Downloading ${fileName}...`);
             await _downloadFileFromGithub(rawUrl, outputPath);
         }
@@ -33,6 +32,17 @@ export async function getExtensionFiles(extensionType:string, dirName:string, au
             }
             process.exit(1);
         }
+    }
+
+    // Post-processing: update app.d.ts reference in custom-source.d.ts if it exists
+    const customSourcePath = path.resolve(dirName, 'custom-source.d.ts');
+    if (fs.existsSync(customSourcePath)) {
+        let content = fs.readFileSync(customSourcePath, 'utf-8');
+        content = content.replace(
+            /\/\/\/ <reference path="\.\.\/goja_plugin_types\/app\.d\.ts" \/>/,
+            '/// <reference path="./app.d.ts" />'
+        );
+        fs.writeFileSync(customSourcePath, content, 'utf-8');
     }
 
     const localFiles = await fs.readdir(path.resolve(__dirname, "providers", extensionType));
@@ -67,10 +77,9 @@ export async function getExtensionFiles(extensionType:string, dirName:string, au
             process.exit(1);
         }
     }
-    
-
 }
 
+// Helper function to download a file from GitHub
 function _downloadFileFromGithub(rawUrl: string, outputPath: string) {
     return new Promise<void>((resolve, reject) => {
         const file = fs.createWriteStream(outputPath);
@@ -87,6 +96,7 @@ function _downloadFileFromGithub(rawUrl: string, outputPath: string) {
     });
 }
 
+// Helper function to normalize extension name
 function _normalizeExtensionName(extensionName:string){
 
     return extensionName.replace(/[^a-zA-Z0-9\s]+/g, '');

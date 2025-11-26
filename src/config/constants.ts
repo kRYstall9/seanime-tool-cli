@@ -10,7 +10,8 @@ export const EXTENSION_TYPES: {name:string, value:string}[] = [
     {name: "Online Streaming Provider", value: "anime-streaming"},
     {name: "Manga provider", value: "manga"},
     {name: "Anime Torrent Provider", value: "anime-torrent"},
-    {name: "Plugin", value: "plugin"}
+    {name: "Plugin", value: "plugin"},
+    {name: "Custom Source", value: "custom-source"}
 ];
 
 export const TEMPLATES:Record<string,string[]> = {
@@ -31,5 +32,12 @@ export const TEMPLATES:Record<string,string[]> = {
         'https://github.com/5rahim/seanime/blob/main/internal/extension_repo/goja_plugin_types/plugin.d.ts',
         'https://github.com/5rahim/seanime/blob/main/internal/extension_repo/goja_plugin_types/system.d.ts',
         'https://github.com/5rahim/seanime/blob/main/internal/extension_repo/goja_plugin_types/core.d.ts'
+    ],
+    "custom-source": [
+        'https://raw.githubusercontent.com/5rahim/seanime/refs/heads/main/internal/extension_repo/goja_plugin_types/app.d.ts',
+        'https://raw.githubusercontent.com/5rahim/seanime/refs/heads/main/internal/extension_repo/goja_usermedia_test/custom-source.d.ts',
+        'https://github.com/5rahim/seanime/blob/main/internal/extension_repo/goja_manga_test/manga-provider.d.ts',
+        'https://github.com/5rahim/seanime/blob/main/internal/extension_repo/goja_torrent_test/anime-torrent-provider.d.ts',
+        'https://github.com/5rahim/seanime/blob/main/internal/extension_repo/goja_onlinestream_test/onlinestream-provider.d.ts'
     ]
 };
