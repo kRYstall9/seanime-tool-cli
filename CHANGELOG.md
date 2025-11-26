@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/kRYstall9/seanime-tool-cli/compare/v1.2.0...v1.3.0) (2025-11-26)
+
+
+### Features
+
+* add custom-source ([3136d11](https://github.com/kRYstall9/seanime-tool-cli/commit/3136d11402f75461f2dc5f7cd5f3ebe37964d67f))
+
 # [1.2.0](https://github.com/kRYstall9/seanime-tool-cli/compare/v1.1.0...v1.2.0) (2025-04-30)
 
 
